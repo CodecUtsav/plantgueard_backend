@@ -33,7 +33,7 @@ const User = mongoose.model("User", userSchema);
 
 // --- Middleware for Auth ---
 const userAuth = async (req, res, next) => {
-  const { token } = req.cookie;
+  const { token } = req.cookies;
   if (!token) {
     return res.json({
       success: false,
@@ -118,7 +118,7 @@ app.post("/create-order", userAuth, async (req, res) => {
   try {
     const { amount } = req.body;
     const options = {
-      amount: amount * 100,
+      amount: amount,
       currency: "INR",
       receipt: `receipt_${Date.now()}`,
     };

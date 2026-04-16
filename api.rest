@@ -1,0 +1,23 @@
+@baseUrl=http://localhost:8000
+
+
+GET {{baseUrl}}
+
+###
+POST {{baseUrl}}/create-order
+Content-Type: application/json
+
+{
+  "amount": 500,
+  "currency": "INR"
+}
+
+###
+POST {{baseUrl}}/verify-payment
+Content-Type: application/json
+
+{
+  "razorpay_order_id": "order_Se5YMpV62Nb4Yv",
+  "razorpay_payment_id": "pay_DummyId12345",
+  "razorpay_signature": "dummy_signature_hash_here"
+}
